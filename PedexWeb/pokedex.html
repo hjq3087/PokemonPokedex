@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Allen的精灵宝可梦图鉴</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="pokemons/pokemons.js"></script> -->
+    <script src="pokemons/pokemonsv1.js "></script>
+</head>
+<body>
+    <header class="banner">
+        <h1>Allen's Pokédex</h1>
+        <img class="header-button header-up-button" src="arrowup.png" alt="arrow">
+        <img class="header-button header-down-button" src="arrowdown.png" alt="arrow">
+        <img class="header-button header-left-button" src="arrowleft.png" alt="arrow">
+        <img class="header-button header-right-button" src="arrowright.png" alt="arrow">
+    </header>
+    <div class="title">
+        <button class="prev-button switch-button" id="id-prev-pokemon">807 捷拉奥拉 &lt;</button>
+        <div class="current-pokemon">
+            <h2 id="id-pokemon-name">妙蛙种子</h2>
+            <h3 id="id-pokemon-id" data-id="001">#001</h3>
+        </div>
+        <button class="next-button switch-button" id="id-next-pokemon">&gt; 002 妙蛙花</button>
+    </div>
+    <div class="container">
+        <div id="id-find-pokemon">
+            <input type="text" name="pokemon-id" id="id-pokemon-id-input" placeholder="输入编号或者名字">
+            <button id="id-pokemon-id-submit" class="search-btn">Submit</button>
+            <button id="id-pokemon-types-button" class="search-btn">Types</button>
+            <button id="id-pokemon-reset-button" class="search-btn">Reset</button>
+            <button id="id-pokemon-all-button" class="search-btn">All</button>
+        </div>
+        <div class="row-container">
+            <div class="row1">
+                <div class="pokemon-img-container">
+                    <h3 class="pokemon-img-title">#001 妙蛙种子</h3>
+                    <img class="pokemon-img" id="id-pokemon-img" src="pokemon_imgs/001妙蛙种子.png" alt="妙蛙种子">
+                </div>
+            </div>
+            <div class="row2">
+                <div class="col-container">
+                    <div class="pokemon-story-container col1">
+                        <h3>描述</h3>
+                        <p id="id-pokemon-story">会看到它在太阳底下睡午觉的样子。在沐浴了充足的阳光后，它背上的种子就会茁壮成长。会看到它在太阳底下睡午觉的样子。在沐浴了充足的阳光后，它背上的种子就会茁壮成长。</p>
+                    </div>
+                    <div class="pokemon-types-container col2">
+                        <h3>属性</h3>
+                        <div id="id-type-list">
+                            <button class="type-btn grass-btn">草</button><button class="type-btn poison-btn">毒</button>
+                        </div>
+                        <h3>弱点</h3>
+                        <div id="id-weakness-list">
+                            <button class="type-btn fire-btn">火</button><button class="type-btn ice-btn">冰</button><button class="type-btn flying-btn">飞行</button><button class="type-btn psychic-btn">超能力</button>
+                        </div>
+                    </div>
+                    <div id="id-info-div" class="col3">
+                        <h3>Info.</h3>
+                        <p>分类: <span>种子宝可梦</span></p>
+                        <p>身高: <span>0.7 m</span></p>
+                        <p>体重: <span>6.9 kg</span></p>
+                        <p>特性: <span>茂盛</span><p>HP减少的时候，草属性的招式威力会提高。</p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>进化</h3>
+            <div id="id-evolution-list">
+                <div class="pokemon-evo-item">
+                    <img class="pokemon-evo-img" src="pokemon_imgs/001妙蛙种子.png" alt="妙蛙种子">
+                    <span class="pokemon-evo-id">001</span><span class="pokemon-evo-name">妙蛙种子</span>
+                </div>
+                <div class="pokemon-evo-item">
+                    <img class="pokemon-evo-img" src="pokemon_imgs/002妙蛙草.png" alt="妙蛙草">
+                    <span class="pokemon-evo-id">002</span><span class="pokemon-evo-name">妙蛙草</span>
+                </div>
+                <div class="pokemon-evo-item">
+                    <img class="pokemon-evo-img" src="pokemon_imgs/003妙蛙花.png" alt="妙蛙花">
+                    <span class="pokemon-evo-id">003</span><span class="pokemon-evo-name">妙蛙花</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="pokedex.js"></script>
+</body>
+</html>

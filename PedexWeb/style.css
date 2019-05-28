@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+button:focus {
+    outline: none;
+}
+
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: lightcyan;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: 100;
+    letter-spacing: 10px;
+}
+
+h3 {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.banner {
+    position: relative;
+    width: 100%;
+    /* background-color: #d2b48c; */
+    background: no-repeat center/150% url('icon_180103.png'),
+                linear-gradient(to right, blue , lightcyan);
+    background-position: 0% 0%;
+    /* background-color:lightcyan; */
+    height: 50vh;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.header-button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px;
+}
+
+.header-up-button {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-down-button {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%)
+}
+
+.header-right-button {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, -50%);
+}
+
+.header-left-button {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+}
+
+.pokemon-img-container {
+    /* border: 20px solid white; */
+    /* padding: 10%; */
+    position: relative;
+    text-align: center;
+}
+
+.pokemon-img-title {
+    /* position: absolute;
+    top: 0%;
+    left: 50%; */
+    text-align: left;
+}
+
+.pokemon-img {
+    width: 90%;
+    background: lightgray;
+    border-radius: 8%;
+}
+
+.title {
+    display: flex;
+}
+
+.current-pokemon {
+    display: inline-block;
+    flex: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.switch-button {
+    flex: 1;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.switch-button:hover {
+    background-color: #555555;
+    color: white;
+}
+
+.row-container {
+    display: flex;
+}
+
+.row1 {
+    flex: 1;
+}
+
+.row2 {
+    flex: 1;    
+}
+
+.col-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.col1 {
+    flex-basis: 30%;
+}
+
+.col2 {
+    flex-basis: 40%;
+}
+
+.col3 {
+    flex-basis: 30%;
+}
+
+
+.type-btn {
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+}
+
+.type-btn:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.grass-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #9bcc50;
+}
+
+.grass-btn:hover {
+    background-color: white;
+    color: #9bcc50;
+    border: 1px solid #9bcc50;
+}
+
+.bug-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #729f3f;
+}
+
+.bug-btn:hover {
+    background-color: white;
+    color: #729f3f;
+    border: 1px solid #729f3f;
+}
+
+.fairy-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #fdb9e9;
+}
+
+.fairy-btn:hover {
+    background-color: white;
+    color: #fdb9e9;
+    border: 1px solid #fdb9e9;
+}
+
+.fire-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #fd7d24;
+}
+
+.fire-btn:hover {
+    background-color: white;
+    color: #fd7d24;
+    border: 1px solid #fd7d24;
+}
+
+.ghost-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #7b62a3;
+}
+
+.ghost-btn:hover {
+    background-color: white;
+    color: #7b62a3;
+    border: 1px solid #7b62a3;
+}
+
+.ground-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #ab9842;
+}
+
+.ground-btn:hover {
+    background-color: white;
+    color: #ab9842;
+    border: 1px solid #ab9842;
+}
+
+.normal-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #a4acaf ;
+}
+
+.normal-btn:hover {
+    background-color: white;
+    color: #a4acaf ;
+    border: 1px solid #a4acaf ;
+}
+
+.psychic-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #f366b9  ;
+}
+
+.psychic-btn:hover {
+    background-color: white;
+    color: #f366b9;
+    border: 1px solid #f366b9;
+}
+
+.steel-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #9eb7b8;
+}
+
+.steel-btn:hover {
+    background-color: white;
+    color: #9eb7b8;
+    border: 1px solid #9eb7b8;
+}
+
+.dark-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #707070;
+}
+
+.dark-btn:hover {
+    background-color: white;
+    color: #707070;
+    border: 1px solid #707070;
+}
+
+.eletric-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #eed535;
+}
+
+.eletric-btn:hover {
+    background-color: white;
+    color: #eed535;
+    border: 1px solid #eed535;
+}
+
+.fighting-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #d56723;
+}
+
+.fighting-btn:hover {
+    background-color: white;
+    color: #d56723;
+    border: 1px solid #d56723;
+}
+
+.flying-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #3dc7ef;
+}
+
+.flying-btn:hover {
+    background-color: white;
+    color: #3dc7ef;
+    border: 1px solid #3dc7ef;
+}
+
+.ice-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #51c4e7;
+}
+
+.ice-btn:hover {
+    background-color: white;
+    color: #51c4e7;
+    border: 1px solid #51c4e7;
+}
+
+.poison-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #b97fc9;
+}
+
+.poison-btn:hover {
+    background-color: white;
+    color: #b97fc9;
+    border: 1px solid #b97fc9;
+}
+
+.rock-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #a38c21;
+}
+
+.rock-btn:hover {
+    background-color: white;
+    color: #a38c21;
+    border: 1px solid #a38c21;
+}
+
+.water-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #4592c4;
+}
+
+.water-btn:hover {
+    background-color: white;
+    color: #4592c4;
+    border: 1px solid #4592c4;
+}
+
+.dragon-btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: #f16e57;
+}
+
+.dragon-btn:hover {
+    background-color: white;
+    color: #f16e57;
+    border: 1px solid #f16e57;
+}
+
+#id-evolution-list {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+}
+.pokemon-evo-item {
+    /* flex: 1; */
+    flex-basis: 15%;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    margin: 0 10px;
+    border-radius: 50%;
+    transition-duration: 0.4s;
+}
+.pokemon-evo-item:hover {
+    cursor: pointer;
+    border: 1px solid #777;
+    background-color: lightgreen;
+}
+
+.pokemon-evo-img {
+    width: 100%;
+    height: auto;
+}
+.pokemon-evo-id {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+.pokemon-evo-name {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+
+#id-find-pokemon {
+    text-align: center;
+}
+
+input[type=text] {
+    padding: 8px 12px;
+    margin: 8px 0;
+}
+
+.result-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.result-list > li {
+    /* width: 10%; */
+    flex-basis: 100px;
+    /* width: 100px; */
+    /* display: inline-block; */
+    /* border: 1px solid lightblue; */
+    /* padding: 5px; */
+    position: relative;
+    list-style: none;
+}
+
+.result-list > li > img {
+    width: 100%;
+    height: auto;
+}
+
+.search-btn {
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+}
+
+.search-btn:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
