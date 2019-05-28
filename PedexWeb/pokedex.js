@@ -21,7 +21,7 @@ handleIdInputValue = key => {
         }
     }
 }
-// hanlde id offset 
+// hanlde id offset
 const handleIdOffset = (id, offset, length) => {
     id = parseInt(id)
     id = (id + offset + length) % length
@@ -301,7 +301,7 @@ const showTypes = () => {
     }
 }
 
-const handleSubmit = () => {   
+const handleSubmit = () => {
     const idInput = document.querySelector('#id-pokemon-id-input')
     const idToSubmit = handleIdInputValue(idInput.value)
     showPokemonById(idToSubmit)
@@ -441,7 +441,7 @@ const bindEventSearch = () => {
 
 const bindEvents = () => {
     bindEventPrevAndNextPokemon()
-    // bindEventBannerBGMove()
+    bindEventBannerBGMove()
     bindEventEvoPokemonImgClick()
     bindEventSearch()
 }
