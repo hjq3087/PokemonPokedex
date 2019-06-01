@@ -49,29 +49,6 @@ const pokemonFromHtml = (html) => {
         weaknesses.push(weakness)
     })
     let evloution = []
-    // evolutionDivs.each((i, e) => {
-    //     let evloutionLevel = i + 1
-    //     let infoDiv = $(e).children('.pokemon-evolution-itembox').children('a').children('.pokemon-evolution-item__info')
-    //     if (infoDiv.length !== 0) {
-    //         let id = infoDiv.children('.pokemon-evolution-box__no').text()
-    //         let name = infoDiv.children('.pokemon-evolution-item__info-name').text()
-    //         let branches = [{id, name}]
-    //         evloution.push({
-    //             evloutionLevel,
-    //             branches,
-    //         })
-    //     } else {
-    //         let infoDivs = $(e).children('.pokemon-evolution-itembox__nonfloat')
-    //         infoDivs.each((e, i) => {
-    //             // let info = $(e).children('a').children('.pokemon-evolution-item__info')
-    //             // let id = info.children('.pokemon-evolution-box__no').text()
-    //             // let name = info.children('.pokemon-evolution-item__info-name').text()
-    //             // console.log(id, name)
-    //             let info = $(e).children('a')
-    //             console.log(info.attr('href'))
-    //         })
-    //     }
-    // })
     evolutionDivs.each((i, e) => {
         let evloutionLevel = i + 1
         let infoDiv = $(e).children('div')
