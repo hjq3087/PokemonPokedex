@@ -6,7 +6,11 @@
     <title>Allen的精灵宝可梦图鉴</title>
     <link rel="stylesheet" href="style.css">
     <!-- <script src="pokemons/pokemons.js"></script> -->
-    <script src="pokemons/pokemonsv1.js "></script>
+    <!-- <script src="pokemons/pokemonsv1.js "></script> -->
+    <!-- <script src="pokemons/pokemonsv2.js "></script> -->
+    <script src="pokemons/pokemonsv3.js "></script>
+    <!-- <script src="pokemons/stylesv1.js "></script> -->
+    <script src="pokemons/stylesv2.js "></script>
 </head>
 <body>
     <header class="banner">
@@ -31,11 +35,13 @@
             <button id="id-pokemon-types-button" class="search-btn">Types</button>
             <button id="id-pokemon-reset-button" class="search-btn">Reset</button>
             <button id="id-pokemon-all-button" class="search-btn">All</button>
+            <button id="id-pokemon-style-button" class="search-btn">Style</button>
         </div>
         <div class="row-container">
             <div class="row1">
                 <div class="pokemon-img-container">
                     <h3 class="pokemon-img-title">#001 妙蛙种子</h3>
+                    <span id="pokemon-img-subname"></span>
                     <img class="pokemon-img" id="id-pokemon-img" src="pokemon_imgs/001妙蛙种子.png" alt="妙蛙种子">
                 </div>
             </div>
@@ -80,6 +86,12 @@
                     <img class="pokemon-evo-img" src="pokemon_imgs/003妙蛙花.png" alt="妙蛙花">
                     <span class="pokemon-evo-id">003</span><span class="pokemon-evo-name">妙蛙花</span>
                 </div>
+            </div>
+        </div>
+        <div>
+            <h3>样子</h3>
+            <div id="id-style-list">
+                <p>妙蛙种子没有其他样子</p>
             </div>
         </div>
     </div>

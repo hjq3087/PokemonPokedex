@@ -7,6 +7,7 @@ class Pokemon  {
     constructor() {
         this.id = ''
         this.name = ''
+        this.subName = ''
         this.types = []
         this.weaknesses = []
         this.story = ''
@@ -14,6 +15,7 @@ class Pokemon  {
         this.imgSrc = ''
         this.abilities = []
         this.info = {}
+        this.style = []
     }
 }
 
@@ -22,6 +24,7 @@ const pokemonFromHtml = (html) => {
     let p = new Pokemon()
 
     const nameDiv = $('.pokemon-slider__main-name')
+    const subNameP = $('.pokemon-slider__main-subname')
     const idDiv = $('.pokemon-slider__main-no')
     const typeDivs = $('.pokemon-type').children('.pokemon-type__type')
     const weaknessDivs = $('.pokemon-weakness__items').children('div')
@@ -32,9 +35,12 @@ const pokemonFromHtml = (html) => {
     const categoryDiv = $('.pokemon-info__category')
     const heightDiv = $('.pokemon-info__height')
     const weightDiv = $('.pokemon-info__weight')
+    const styleDiv = $('.pokemon-style__boxes-inner')
+    
 
 
     let name = nameDiv.text()
+    let subName = subNameP.text()
     let id = idDiv.text()
     let story = storySpan.text()
     let imgSrc = `https://cn.portal-pokemon.com${img.attr('src')}`
@@ -64,14 +70,14 @@ const pokemonFromHtml = (html) => {
                 evloution.push({
                     evloutionLevel,
                     branches: [
-                        { "id": "134", "name": "水伊布", },
-                        { "id": "135", "name": "雷伊布", },
-                        { "id": "136", "name": "火伊布", },
-                        { "id": "196", "name": "太阳伊布", },
-                        { "id": "197", "name": "月亮伊布", },
-                        { "id": "470", "name": "叶伊布", },
-                        { "id": "471", "name": "冰伊布", },
-                        { "id": "700", "name": "仙子伊布", },
+                        { "id": "134", "name": "水伊布", "subname": "" },
+                        { "id": "135", "name": "雷伊布", "subname": "" },
+                        { "id": "136", "name": "火伊布", "subname": "" },
+                        { "id": "196", "name": "太阳伊布", "subname": "" },
+                        { "id": "197", "name": "月亮伊布", "subname": "" },
+                        { "id": "470", "name": "叶伊布", "subname": "" },
+                        { "id": "471", "name": "冰伊布", "subname": "" },
+                        { "id": "700", "name": "仙子伊布", "subname": "" },
                     ],
                 })
             }
@@ -79,7 +85,8 @@ const pokemonFromHtml = (html) => {
             let info = infoDiv.children('a').children('.pokemon-evolution-item__info')
             let id = info.children('.pokemon-evolution-box__no').text()
             let name = info.children('.pokemon-evolution-item__info-name').text()
-            let branches = [{id, name}]
+            let subname = info.children('.pokemon-evolution-item__info-subname').text()
+            let branches = [{id, name, subname}]
             evloution.push({evloutionLevel, branches})
         } else {
             let length = evloution.push({evloutionLevel, branches: []})
@@ -87,7 +94,8 @@ const pokemonFromHtml = (html) => {
                 let info = $(e).children('a').children('.pokemon-evolution-item__info')
                 let id = info.children('.pokemon-evolution-box__no').text()
                 let name = info.children('.pokemon-evolution-item__info-name').text()
-                evloution[length - 1].branches.push({id, name})
+                let subname = info.children('.pokemon-evolution-item__info-subname').text()
+                evloution[length - 1].branches.push({id, name, subname})
             })
         }
     })
@@ -101,18 +109,37 @@ const pokemonFromHtml = (html) => {
         }
         abilities.push(ability)
     })
+    let style = []
+    let styles = styleDiv.children('.pokemon-style-box')
+    if (styles.length > 0) {
+        styles.each((i, e) => {
+            let styleBox = $(e)
+            let styleLink = styleBox.children('a')
+            let styleId = styleLink.children('.pokemon-style-box__no').text()
+            let styleName = styleLink.children('.pokemon-style-box__name').text()
+            let styleSubName = styleLink.children('.pokemon-style-box__subname').text()
+            style.push({
+                styleId,
+                styleName,
+                styleSubName,
+            })
+        })
+    }
+    
     let category = categoryDiv.children('.pokemon-info__value').children('span').text()
     let height = parseFloat(heightDiv.children('.pokemon-info__value').text())
     let weight = parseFloat(weightDiv.children('.pokemon-info__value').text())
 
 
     p.name = name
+    p.subName = subName
     p.id = id
     p.story = story
     p.types = types
     p.weaknesses = weaknesses
     p.imgSrc = imgSrc
     p.evolution = evloution
+    p.style = style
     p.info = {
         category,
         height,
@@ -184,8 +211,53 @@ async function fetchAllPokemons() {
             pokemons.push(pokemon)
         })
     })
+    let stylePromiseList = []
+    let pokemonStyles = []
+    pokemons.forEach(pokemon => {
+        let styleList = pokemon.style.slice(1)
+        if (styleList.length >= 1) {
+            styleList.forEach((style, index) => {
+                let id = `${style.styleId}_${index + 1}`
+                let p = fetchPokemonById(id)
+                pokemonStyles.push(p)
+            })
+        }
+    })
+    await Promise.all(stylePromiseList).then((dataList) => {
+        dataList.forEach(data => {
+            let pokemon = pokemonFromHtml(data)
+            pokemonStyles.push(pokemon)
+        })
+    })
     console.log('精灵宝可梦数据爬取完毕...')
+
     return pokemons
+}
+
+async function fetchAllStyles(pokemons) {
+
+    let stylePromiseList = []
+    console.log('开始请求精灵宝可梦style数据...')
+    pokemons.forEach(pokemon => {
+        let styleList = pokemon.style.slice(1)
+        if (styleList.length >= 1) {
+            styleList.forEach((style, index) => {
+                let id = `${style.styleId}_${index + 1}`
+                let p = fetchPokemonById(id)
+                stylePromiseList.push(p)
+            })
+        }
+    })
+    let pokemonStyles = []
+    await Promise.all(stylePromiseList).then((dataList) => {
+        dataList.forEach(data => {
+            let pokemon = pokemonFromHtml(data)
+            pokemonStyles.push(pokemon)
+        })
+    })
+    console.log('精灵宝可梦style数据爬取完毕...')
+
+    return pokemonStyles
 }
 
 const savePokemonDatas = (pokemons) => {
@@ -195,12 +267,13 @@ const savePokemonDatas = (pokemons) => {
     console.log('精灵宝可梦数据写入完毕...')
 }
 
-const saveWikiDatas = (pokemons) => {
-    let json = JSON.stringify(pokemons, null, 2)
-    let path = 'stats.json'
+const saveStyleDatas = (styleList) => {
+    let json = JSON.stringify(styleList, null, 2)
+    let path = 'styles.json'
     fs.writeFileSync(path, json)
-    console.log('精灵宝可梦种族值数据写入完毕...')
+    console.log('精灵宝可梦style数据写入完毕...')
 }
+
 
 const downloadImg = (url, path) => {
     request
@@ -224,11 +297,42 @@ const downloadPokemonImages = (pokemons) => {
     })
 }
 
+const downloadStyleImages = (pokemons) => {
+    let dirName = 'style_imgs'
+    ensurePath(dirName)
+    pokemons.forEach(pokemon => {
+        let url = pokemon.imgSrc
+        
+        let fileName = `${pokemon.id}${pokemon.name}${pokemon.subName}`
+        let path =`${dirName}/${fileName}.png`
+        downloadImg(url, path)
+    })
+}
+
 
 async function __main() {
     const pokemonList = await fetchAllPokemons()
-    // const statsList = await fetchStatsFromWiki(pokemonList)
+    const styleList = await fetchAllStyles(pokemonList)
     savePokemonDatas(pokemonList)
+    saveStyleDatas(styleList)
+    // downloadPokemonImages(pokemonList)
+    // downloadStyleImages(styleList)
 }
 
-__main()
+// __main()
+
+async function download() {
+    const pokemonList = await fetchAllPokemons()
+    console.log(pokemonList.length)
+    for (let i = 0; i < pokemonList.length; i++) {
+        let pokemon = pokemonList[i]
+        console.log(pokemon.name)
+        let dirName = 'pokemon_imgs'
+        let url = pokemon.imgSrc
+        let fileName = `${pokemon.id}${pokemon.name}${pokemon.subName}`
+        let path =`${dirName}/${fileName}.png`
+        downloadImg(url, path)
+    }
+}
+
+download()
